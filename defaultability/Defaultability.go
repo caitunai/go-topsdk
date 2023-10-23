@@ -36,3 +36,63 @@ func (ability *Defaultability) TaobaoKfcKeywordSearch(req *request.TaobaoKfcKeyw
 	}
 	return &respStruct, err
 }
+
+/*
+淘宝客-推广者-物料id列表查询
+*/
+func (ability *Defaultability) TaobaoTbkOptimusTouMaterialIdsGet(req *request.TaobaoTbkOptimusTouMaterialIdsGetRequest) (*response.TaobaoTbkOptimusTouMaterialIdsGetResponse, error) {
+	if ability.Client == nil {
+		return nil, errors.New("Defaultability topClient is nil")
+	}
+	var jsonStr, err = ability.Client.Execute("taobao.tbk.optimus.tou.material.ids.get", req.ToMap(), req.ToFileMap())
+	var respStruct = response.TaobaoTbkOptimusTouMaterialIdsGetResponse{}
+	if err != nil {
+		log.Println("taobaoTbkOptimusTouMaterialIdsGet error", err)
+		return &respStruct, err
+	}
+	err = util.HandleJsonResponse(jsonStr, &respStruct)
+	if respStruct.Body == "" || len(respStruct.Body) == 0 {
+		respStruct.Body = jsonStr
+	}
+	return &respStruct, err
+}
+
+/*
+淘宝客-推广者-物料搜索升级版
+*/
+func (ability *Defaultability) TaobaoTbkDgMaterialOptionalUpgrade(req *request.TaobaoTbkDgMaterialOptionalUpgradeRequest) (*response.TaobaoTbkDgMaterialOptionalUpgradeResponse, error) {
+	if ability.Client == nil {
+		return nil, errors.New("Defaultability topClient is nil")
+	}
+	var jsonStr, err = ability.Client.Execute("taobao.tbk.dg.material.optional.upgrade", req.ToMap(), req.ToFileMap())
+	var respStruct = response.TaobaoTbkDgMaterialOptionalUpgradeResponse{}
+	if err != nil {
+		log.Println("taobaoTbkDgMaterialOptionalUpgrade error", err)
+		return &respStruct, err
+	}
+	err = util.HandleJsonResponse(jsonStr, &respStruct)
+	if respStruct.Body == "" || len(respStruct.Body) == 0 {
+		respStruct.Body = jsonStr
+	}
+	return &respStruct, err
+}
+
+/*
+淘宝客-推广者-物料精选升级版
+*/
+func (ability *Defaultability) TaobaoTbkDgMaterialRecommend(req *request.TaobaoTbkDgMaterialRecommendRequest) (*response.TaobaoTbkDgMaterialRecommendResponse, error) {
+	if ability.Client == nil {
+		return nil, errors.New("Defaultability topClient is nil")
+	}
+	var jsonStr, err = ability.Client.Execute("taobao.tbk.dg.material.recommend", req.ToMap(), req.ToFileMap())
+	var respStruct = response.TaobaoTbkDgMaterialRecommendResponse{}
+	if err != nil {
+		log.Println("taobaoTbkDgMaterialRecommend error", err)
+		return &respStruct, err
+	}
+	err = util.HandleJsonResponse(jsonStr, &respStruct)
+	if respStruct.Body == "" || len(respStruct.Body) == 0 {
+		respStruct.Body = jsonStr
+	}
+	return &respStruct, err
+}
