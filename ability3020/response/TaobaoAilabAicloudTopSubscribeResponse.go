@@ -1,7 +1,5 @@
 package response
 
-import ()
-
 type TaobaoAilabAicloudTopSubscribeResponse struct {
 
 	/*

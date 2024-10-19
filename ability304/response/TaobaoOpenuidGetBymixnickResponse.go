@@ -1,7 +1,5 @@
 package response
 
-import ()
-
 type TaobaoOpenuidGetBymixnickResponse struct {
 
 	/*
