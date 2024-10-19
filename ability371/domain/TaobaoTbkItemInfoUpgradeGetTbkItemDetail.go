@@ -20,6 +20,10 @@ type TaobaoTbkItemInfoUpgradeGetTbkItemDetail struct {
 	/*
 	   商品基本信息     */
 	ItemBasicInfo *TaobaoTbkItemInfoUpgradeGetBasicMapData `json:"item_basic_info,omitempty" `
+
+	/*
+	   预售信息     */
+	PresaleInfo *TaobaoTbkItemInfoUpgradeGetPresaleInfo `json:"presale_info,omitempty" `
 }
 
 func (s *TaobaoTbkItemInfoUpgradeGetTbkItemDetail) SetItemId(v string) *TaobaoTbkItemInfoUpgradeGetTbkItemDetail {
@@ -40,5 +44,9 @@ func (s *TaobaoTbkItemInfoUpgradeGetTbkItemDetail) SetInputItemIid(v string) *Ta
 }
 func (s *TaobaoTbkItemInfoUpgradeGetTbkItemDetail) SetItemBasicInfo(v TaobaoTbkItemInfoUpgradeGetBasicMapData) *TaobaoTbkItemInfoUpgradeGetTbkItemDetail {
 	s.ItemBasicInfo = &v
+	return s
+}
+func (s *TaobaoTbkItemInfoUpgradeGetTbkItemDetail) SetPresaleInfo(v TaobaoTbkItemInfoUpgradeGetPresaleInfo) *TaobaoTbkItemInfoUpgradeGetTbkItemDetail {
+	s.PresaleInfo = &v
 	return s
 }

@@ -18,86 +18,6 @@ func NewAbility304(client *topsdk.TopClient) *Ability304 {
 }
 
 /*
-获取ISV发起请求服务器IP
-*/
-func (ability *Ability304) TaobaoAppipGet(req *request.TaobaoAppipGetRequest) (*response.TaobaoAppipGetResponse, error) {
-	if ability.Client == nil {
-		return nil, errors.New("Ability304 topClient is nil")
-	}
-	var jsonStr, err = ability.Client.Execute("taobao.appip.get", req.ToMap(), req.ToFileMap())
-	var respStruct = response.TaobaoAppipGetResponse{}
-	if err != nil {
-		log.Println("taobaoAppipGet error", err)
-		return &respStruct, err
-	}
-	err = util.HandleJsonResponse(jsonStr, &respStruct)
-	if respStruct.Body == "" || len(respStruct.Body) == 0 {
-		respStruct.Body = jsonStr
-	}
-	return &respStruct, err
-}
-
-/*
-业务文件获取
-*/
-func (ability *Ability304) TaobaoFilesGet(req *request.TaobaoFilesGetRequest) (*response.TaobaoFilesGetResponse, error) {
-	if ability.Client == nil {
-		return nil, errors.New("Ability304 topClient is nil")
-	}
-	var jsonStr, err = ability.Client.Execute("taobao.files.get", req.ToMap(), req.ToFileMap())
-	var respStruct = response.TaobaoFilesGetResponse{}
-	if err != nil {
-		log.Println("taobaoFilesGet error", err)
-		return &respStruct, err
-	}
-	err = util.HandleJsonResponse(jsonStr, &respStruct)
-	if respStruct.Body == "" || len(respStruct.Body) == 0 {
-		respStruct.Body = jsonStr
-	}
-	return &respStruct, err
-}
-
-/*
-刷新Access Token
-*/
-func (ability *Ability304) TaobaoTopAuthTokenRefresh(req *request.TaobaoTopAuthTokenRefreshRequest) (*response.TaobaoTopAuthTokenRefreshResponse, error) {
-	if ability.Client == nil {
-		return nil, errors.New("Ability304 topClient is nil")
-	}
-	var jsonStr, err = ability.Client.Execute("taobao.top.auth.token.refresh", req.ToMap(), req.ToFileMap())
-	var respStruct = response.TaobaoTopAuthTokenRefreshResponse{}
-	if err != nil {
-		log.Println("taobaoTopAuthTokenRefresh error", err)
-		return &respStruct, err
-	}
-	err = util.HandleJsonResponse(jsonStr, &respStruct)
-	if respStruct.Body == "" || len(respStruct.Body) == 0 {
-		respStruct.Body = jsonStr
-	}
-	return &respStruct, err
-}
-
-/*
-获取Access Token
-*/
-func (ability *Ability304) TaobaoTopAuthTokenCreate(req *request.TaobaoTopAuthTokenCreateRequest) (*response.TaobaoTopAuthTokenCreateResponse, error) {
-	if ability.Client == nil {
-		return nil, errors.New("Ability304 topClient is nil")
-	}
-	var jsonStr, err = ability.Client.Execute("taobao.top.auth.token.create", req.ToMap(), req.ToFileMap())
-	var respStruct = response.TaobaoTopAuthTokenCreateResponse{}
-	if err != nil {
-		log.Println("taobaoTopAuthTokenCreate error", err)
-		return &respStruct, err
-	}
-	err = util.HandleJsonResponse(jsonStr, &respStruct)
-	if respStruct.Body == "" || len(respStruct.Body) == 0 {
-		respStruct.Body = jsonStr
-	}
-	return &respStruct, err
-}
-
-/*
 获取授权账号对应的OpenUid
 */
 func (ability *Ability304) TaobaoOpenuidGet(req *request.TaobaoOpenuidGetRequest, session string) (*response.TaobaoOpenuidGetResponse, error) {
@@ -188,6 +108,86 @@ func (ability *Ability304) TaobaoOpenuidGetBymixnick(req *request.TaobaoOpenuidG
 	var respStruct = response.TaobaoOpenuidGetBymixnickResponse{}
 	if err != nil {
 		log.Println("taobaoOpenuidGetBymixnick error", err)
+		return &respStruct, err
+	}
+	err = util.HandleJsonResponse(jsonStr, &respStruct)
+	if respStruct.Body == "" || len(respStruct.Body) == 0 {
+		respStruct.Body = jsonStr
+	}
+	return &respStruct, err
+}
+
+/*
+获取ISV发起请求服务器IP
+*/
+func (ability *Ability304) TaobaoAppipGet(req *request.TaobaoAppipGetRequest) (*response.TaobaoAppipGetResponse, error) {
+	if ability.Client == nil {
+		return nil, errors.New("Ability304 topClient is nil")
+	}
+	var jsonStr, err = ability.Client.Execute("taobao.appip.get", req.ToMap(), req.ToFileMap())
+	var respStruct = response.TaobaoAppipGetResponse{}
+	if err != nil {
+		log.Println("taobaoAppipGet error", err)
+		return &respStruct, err
+	}
+	err = util.HandleJsonResponse(jsonStr, &respStruct)
+	if respStruct.Body == "" || len(respStruct.Body) == 0 {
+		respStruct.Body = jsonStr
+	}
+	return &respStruct, err
+}
+
+/*
+业务文件获取
+*/
+func (ability *Ability304) TaobaoFilesGet(req *request.TaobaoFilesGetRequest) (*response.TaobaoFilesGetResponse, error) {
+	if ability.Client == nil {
+		return nil, errors.New("Ability304 topClient is nil")
+	}
+	var jsonStr, err = ability.Client.Execute("taobao.files.get", req.ToMap(), req.ToFileMap())
+	var respStruct = response.TaobaoFilesGetResponse{}
+	if err != nil {
+		log.Println("taobaoFilesGet error", err)
+		return &respStruct, err
+	}
+	err = util.HandleJsonResponse(jsonStr, &respStruct)
+	if respStruct.Body == "" || len(respStruct.Body) == 0 {
+		respStruct.Body = jsonStr
+	}
+	return &respStruct, err
+}
+
+/*
+刷新Access Token
+*/
+func (ability *Ability304) TaobaoTopAuthTokenRefresh(req *request.TaobaoTopAuthTokenRefreshRequest) (*response.TaobaoTopAuthTokenRefreshResponse, error) {
+	if ability.Client == nil {
+		return nil, errors.New("Ability304 topClient is nil")
+	}
+	var jsonStr, err = ability.Client.Execute("taobao.top.auth.token.refresh", req.ToMap(), req.ToFileMap())
+	var respStruct = response.TaobaoTopAuthTokenRefreshResponse{}
+	if err != nil {
+		log.Println("taobaoTopAuthTokenRefresh error", err)
+		return &respStruct, err
+	}
+	err = util.HandleJsonResponse(jsonStr, &respStruct)
+	if respStruct.Body == "" || len(respStruct.Body) == 0 {
+		respStruct.Body = jsonStr
+	}
+	return &respStruct, err
+}
+
+/*
+获取Access Token
+*/
+func (ability *Ability304) TaobaoTopAuthTokenCreate(req *request.TaobaoTopAuthTokenCreateRequest) (*response.TaobaoTopAuthTokenCreateResponse, error) {
+	if ability.Client == nil {
+		return nil, errors.New("Ability304 topClient is nil")
+	}
+	var jsonStr, err = ability.Client.Execute("taobao.top.auth.token.create", req.ToMap(), req.ToFileMap())
+	var respStruct = response.TaobaoTopAuthTokenCreateResponse{}
+	if err != nil {
+		log.Println("taobaoTopAuthTokenCreate error", err)
 		return &respStruct, err
 	}
 	err = util.HandleJsonResponse(jsonStr, &respStruct)

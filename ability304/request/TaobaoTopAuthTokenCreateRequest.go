@@ -5,7 +5,7 @@ type TaobaoTopAuthTokenCreateRequest struct {
 	   授权code，grantType==authorization_code 时需要     */
 	Code *string `json:"code" required:"true" `
 	/*
-	   与生成code的uuid配对     */
+	   非必填，与生成code的uuid配对，使用方式参考文档     */
 	Uuid *string `json:"uuid,omitempty" required:"false" `
 }
 

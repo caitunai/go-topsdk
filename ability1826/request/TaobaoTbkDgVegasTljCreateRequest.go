@@ -12,13 +12,13 @@ type TaobaoTbkDgVegasTljCreateRequest struct {
 	   必须传入0     */
 	SecurityLevel *int64 `json:"security_level,omitempty" required:"false" `
 	/*
-	   使用开始日期。相对时间，无需填写，以用户领取时间作为使用开始时间。绝对时间，格式 yyyy-MM-dd，例如，2019-01-29，表示从2019-01-29 00:00:00 开始     */
+	   使用开始日期。相对时间，无需填写，以用户领取时间作为使用开始时间。绝对时间，格式 yyyy-MM-dd，例如，2019-01-29，表示从2019-01-29 00:00:00 开始,格式 yyyy-MM-dd HH:mm:ss，例如，2019-01-29 20:00:10，表示从2019-01-2920:00:10 开始     */
 	UseStartTime *string `json:"use_start_time,omitempty" required:"false" `
 	/*
 	   结束日期的模式,1:相对时间，2:绝对时间     */
 	UseEndTimeMode *int64 `json:"use_end_time_mode,omitempty" required:"false" `
 	/*
-	   使用结束日期。如果是结束时间模式为相对时间，时间格式为1-7直接的整数, 例如，1（相对领取时间1天）； 如果是绝对时间，格式为yyyy-MM-dd，例如，2019-01-29，表示到2019-01-29 23:59:59结束     */
+	   使用结束日期。如果是结束时间模式为相对时间，时间格式为1-7直接的整数, 例如，1（相对领取时间1天）； 如果是绝对时间，格式为yyyy-MM-dd，例如，2019-01-29，表示到2019-01-29 23:59:59结束,格式 yyyy-MM-dd HH:mm:ss，例如，2019-01-29 20:00:10，表示从2019-01-29 20:00:10 开始     */
 	UseEndTime *string `json:"use_end_time,omitempty" required:"false" `
 	/*
 	   发放截止时间     */
@@ -47,6 +47,9 @@ type TaobaoTbkDgVegasTljCreateRequest struct {
 	/*
 	   已下线，后续不需要填写     */
 	CampaignType *string `json:"campaign_type,omitempty" required:"false" `
+	/*
+	   淘礼金使用门槛，实付款大于等于门槛面额时才可使用此淘礼金；门槛值不能小于淘礼金面额     */
+	UseThreshold *string `json:"use_threshold,omitempty" required:"false" `
 }
 
 func (s *TaobaoTbkDgVegasTljCreateRequest) SetAdzoneId(v int64) *TaobaoTbkDgVegasTljCreateRequest {
@@ -105,6 +108,10 @@ func (s *TaobaoTbkDgVegasTljCreateRequest) SetCampaignType(v string) *TaobaoTbkD
 	s.CampaignType = &v
 	return s
 }
+func (s *TaobaoTbkDgVegasTljCreateRequest) SetUseThreshold(v string) *TaobaoTbkDgVegasTljCreateRequest {
+	s.UseThreshold = &v
+	return s
+}
 
 func (req *TaobaoTbkDgVegasTljCreateRequest) ToMap() map[string]interface{} {
 	paramMap := make(map[string]interface{})
@@ -149,6 +156,9 @@ func (req *TaobaoTbkDgVegasTljCreateRequest) ToMap() map[string]interface{} {
 	}
 	if req.CampaignType != nil {
 		paramMap["campaign_type"] = *req.CampaignType
+	}
+	if req.UseThreshold != nil {
+		paramMap["use_threshold"] = *req.UseThreshold
 	}
 	return paramMap
 }

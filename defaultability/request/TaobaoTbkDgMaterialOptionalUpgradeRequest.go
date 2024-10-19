@@ -1,5 +1,10 @@
 package request
 
+import (
+	"github.com/caitunai/go-topsdk/defaultability/domain"
+	"github.com/caitunai/go-topsdk/util"
+)
+
 type TaobaoTbkDgMaterialOptionalUpgradeRequest struct {
 	/*
 	   商品筛选-店铺dsr评分。筛选大于等于当前设置的店铺dsr评分的商品0-50000之间     */
@@ -11,16 +16,16 @@ type TaobaoTbkDgMaterialOptionalUpgradeRequest struct {
 	   第几页，默认：１ defalutValue��1    */
 	PageNo *int64 `json:"page_no,omitempty" required:"false" `
 	/*
-	   商品筛选-淘客佣金比率上限。如：1234表示12.34%     */
+	   商品筛选-淘客收入比率上限(商品佣金比率+补贴比率)。如：1234表示12.34%     */
 	EndTkRate *int64 `json:"end_tk_rate,omitempty" required:"false" `
 	/*
-	   商品筛选-淘客佣金比率下限。如：1234表示12.34%     */
+	   商品筛选-淘客收入比率下限(商品佣金比率+补贴比率)。如：1234表示12.34%     */
 	StartTkRate *int64 `json:"start_tk_rate,omitempty" required:"false" `
 	/*
-	   商品筛选-折扣价范围上限。单位：元     */
+	   商品筛选-预估到手价范围上限。单位：元     */
 	EndPrice *int64 `json:"end_price,omitempty" required:"false" `
 	/*
-	   商品筛选-折扣价范围下限。单位：元     */
+	   商品筛选-预估到手价范围下限。单位：元     */
 	StartPrice *int64 `json:"start_price,omitempty" required:"false" `
 	/*
 	   商品筛选-是否海外商品。true表示属于海外商品，false或不设置表示不限     */
@@ -29,7 +34,7 @@ type TaobaoTbkDgMaterialOptionalUpgradeRequest struct {
 	   商品筛选-是否天猫商品。true表示属于天猫商品，false或不设置表示不限     */
 	IsTmall *bool `json:"is_tmall,omitempty" required:"false" `
 	/*
-	   排序_des（降序），排序_asc（升序），销量（total_sales），淘客收入比率（tk_rate）， 累计推广量（tk_total_sales），总支出佣金（tk_total_commi），价格（price），匹配分（match）     */
+	   排序_des（降序），排序_asc（升序），销量（total_sales），淘客收入比率（tk_rate），营销计划佣金（tk_mkt_rate）， 累计推广量（tk_total_sales），总支出佣金（tk_total_commi），预估到价格（final_promotion_price），匹配分（match）     */
 	Sort *string `json:"sort,omitempty" required:"false" `
 	/*
 	   商品筛选-所在地     */
@@ -38,7 +43,7 @@ type TaobaoTbkDgMaterialOptionalUpgradeRequest struct {
 	   商品筛选-后台类目ID。用,分割，最大10个     */
 	Cat *string `json:"cat,omitempty" required:"false" `
 	/*
-	   商品筛选-查询词；注意：使用标题精准搜索时，若无消费者比价场景ID2权限，当搜索结果只有一个商品时则出参不再提供商品推广链接和商品id字段，若搜索结果仍有多个商品，则正常出参。同时无消费者比价场景ID2权限，q参数也不再支持入参淘宝复制的商品链接进行搜索查询，仅支持入参含新商品id的淘宝客推广链接如uland链接进行搜索查询(场景id使用说明参考《淘宝客新商品ID升级》白皮书：https://www.yuque.com/taobaolianmengguanfangxiaoer/zmig94/tfyt0pahmlpzu2ud)     */
+	   商品筛选-查询词；注意：q参数不支持入参淘宝联盟链接。若无消费者比价场景ID2权限，q参数也不支持入参淘宝复制的商品链接进行搜索查询；同时无消费者比价场景ID2权限使用标题精准搜索时，当搜索结果只有一个商品时则出参不再提供商品推广链接和商品id字段，若搜索结果仍有多个商品，则正常出参。(场景id使用说明参考《淘宝客新商品ID升级》白皮书：https://www.yuque.com/taobaolianmengguanfangxiaoer/zmig94/tfyt0pahmlpzu2ud)     */
 	Q *string `json:"q,omitempty" required:"false" `
 	/*
 	   物料id，不传时默认物料material_id=80309；如果直接对消费者投放，可使用官方个性化算法优化的搜索物料material_id=17004（注意：若物料id=17004没查询到结果则出系统默认物料id=80309的查询结果） defalutValue��80309    */
@@ -103,6 +108,12 @@ type TaobaoTbkDgMaterialOptionalUpgradeRequest struct {
 	/*
 	   线报状态筛选，0-全部 1-过期 2-实时生效 3-未来生效 不传默认过滤有效     */
 	MgcStatus *string `json:"mgc_status,omitempty" required:"false" `
+	/*
+	   人群ID，仅适用于物料评估场景material_id=41377     */
+	UcrowdId *int64 `json:"ucrowd_id,omitempty" required:"false" `
+	/*
+	   物料评估-商品列表     */
+	UcrowdRankItems *[]domain.TaobaoTbkDgMaterialOptionalUpgradeUcrowdrankitems `json:"ucrowd_rank_items,omitempty" required:"false" `
 }
 
 func (s *TaobaoTbkDgMaterialOptionalUpgradeRequest) SetStartDsr(v int64) *TaobaoTbkDgMaterialOptionalUpgradeRequest {
@@ -241,6 +252,14 @@ func (s *TaobaoTbkDgMaterialOptionalUpgradeRequest) SetMgcStatus(v string) *Taob
 	s.MgcStatus = &v
 	return s
 }
+func (s *TaobaoTbkDgMaterialOptionalUpgradeRequest) SetUcrowdId(v int64) *TaobaoTbkDgMaterialOptionalUpgradeRequest {
+	s.UcrowdId = &v
+	return s
+}
+func (s *TaobaoTbkDgMaterialOptionalUpgradeRequest) SetUcrowdRankItems(v []domain.TaobaoTbkDgMaterialOptionalUpgradeUcrowdrankitems) *TaobaoTbkDgMaterialOptionalUpgradeRequest {
+	s.UcrowdRankItems = &v
+	return s
+}
 
 func (req *TaobaoTbkDgMaterialOptionalUpgradeRequest) ToMap() map[string]interface{} {
 	paramMap := make(map[string]interface{})
@@ -345,6 +364,12 @@ func (req *TaobaoTbkDgMaterialOptionalUpgradeRequest) ToMap() map[string]interfa
 	}
 	if req.MgcStatus != nil {
 		paramMap["mgc_status"] = *req.MgcStatus
+	}
+	if req.UcrowdId != nil {
+		paramMap["ucrowd_id"] = *req.UcrowdId
+	}
+	if req.UcrowdRankItems != nil {
+		paramMap["ucrowd_rank_items"] = util.ConvertStructList(*req.UcrowdRankItems)
 	}
 	return paramMap
 }

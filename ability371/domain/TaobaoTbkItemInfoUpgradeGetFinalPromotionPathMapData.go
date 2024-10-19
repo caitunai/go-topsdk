@@ -20,6 +20,10 @@ type TaobaoTbkItemInfoUpgradeGetFinalPromotionPathMapData struct {
 	/*
 	   优惠结束时间     */
 	PromotionEndTime *string `json:"promotion_end_time,omitempty" `
+
+	/*
+	   优惠ID     */
+	PromotionId *string `json:"promotion_id,omitempty" `
 }
 
 func (s *TaobaoTbkItemInfoUpgradeGetFinalPromotionPathMapData) SetPromotionTitle(v string) *TaobaoTbkItemInfoUpgradeGetFinalPromotionPathMapData {
@@ -40,5 +44,9 @@ func (s *TaobaoTbkItemInfoUpgradeGetFinalPromotionPathMapData) SetPromotionStart
 }
 func (s *TaobaoTbkItemInfoUpgradeGetFinalPromotionPathMapData) SetPromotionEndTime(v string) *TaobaoTbkItemInfoUpgradeGetFinalPromotionPathMapData {
 	s.PromotionEndTime = &v
+	return s
+}
+func (s *TaobaoTbkItemInfoUpgradeGetFinalPromotionPathMapData) SetPromotionId(v string) *TaobaoTbkItemInfoUpgradeGetFinalPromotionPathMapData {
+	s.PromotionId = &v
 	return s
 }

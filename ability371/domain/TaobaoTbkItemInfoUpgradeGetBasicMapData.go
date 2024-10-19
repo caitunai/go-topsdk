@@ -66,10 +66,6 @@ type TaobaoTbkItemInfoUpgradeGetBasicMapData struct {
 	SuperiorBrand *string `json:"superior_brand,omitempty" `
 
 	/*
-	   是否是热门商品，0不是，1是     */
-	HotFlag *string `json:"hot_flag,omitempty" `
-
-	/*
 	   商品库类型，支持多库类型输出，以英文逗号分隔“,”分隔，1:营销商品主推库，2. 内容商品库，如果值为空则不属于1，2这两种商品类型     */
 	MaterialLibType *string `json:"material_lib_type,omitempty" `
 
@@ -88,6 +84,26 @@ type TaobaoTbkItemInfoUpgradeGetBasicMapData struct {
 	/*
 	   商品信息-是否包邮     */
 	FreeShipment *bool `json:"free_shipment,omitempty" `
+
+	/*
+	   商品信息-品牌名称     */
+	BrandName *string `json:"brand_name,omitempty" `
+
+	/*
+	   商品信息-商品短标题     */
+	ShortTitle *string `json:"short_title,omitempty" `
+
+	/*
+	   商品信息-商品白底图     */
+	WhiteImage *string `json:"white_image,omitempty" `
+
+	/*
+	   卖家id(字段等级C)     */
+	SellerId *int64 `json:"seller_id,omitempty" `
+
+	/*
+	   年销量     */
+	AnnualVol *string `json:"annual_vol,omitempty" `
 }
 
 func (s *TaobaoTbkItemInfoUpgradeGetBasicMapData) SetTitle(v string) *TaobaoTbkItemInfoUpgradeGetBasicMapData {
@@ -154,10 +170,6 @@ func (s *TaobaoTbkItemInfoUpgradeGetBasicMapData) SetSuperiorBrand(v string) *Ta
 	s.SuperiorBrand = &v
 	return s
 }
-func (s *TaobaoTbkItemInfoUpgradeGetBasicMapData) SetHotFlag(v string) *TaobaoTbkItemInfoUpgradeGetBasicMapData {
-	s.HotFlag = &v
-	return s
-}
 func (s *TaobaoTbkItemInfoUpgradeGetBasicMapData) SetMaterialLibType(v string) *TaobaoTbkItemInfoUpgradeGetBasicMapData {
 	s.MaterialLibType = &v
 	return s
@@ -176,5 +188,25 @@ func (s *TaobaoTbkItemInfoUpgradeGetBasicMapData) SetShopTitle(v string) *Taobao
 }
 func (s *TaobaoTbkItemInfoUpgradeGetBasicMapData) SetFreeShipment(v bool) *TaobaoTbkItemInfoUpgradeGetBasicMapData {
 	s.FreeShipment = &v
+	return s
+}
+func (s *TaobaoTbkItemInfoUpgradeGetBasicMapData) SetBrandName(v string) *TaobaoTbkItemInfoUpgradeGetBasicMapData {
+	s.BrandName = &v
+	return s
+}
+func (s *TaobaoTbkItemInfoUpgradeGetBasicMapData) SetShortTitle(v string) *TaobaoTbkItemInfoUpgradeGetBasicMapData {
+	s.ShortTitle = &v
+	return s
+}
+func (s *TaobaoTbkItemInfoUpgradeGetBasicMapData) SetWhiteImage(v string) *TaobaoTbkItemInfoUpgradeGetBasicMapData {
+	s.WhiteImage = &v
+	return s
+}
+func (s *TaobaoTbkItemInfoUpgradeGetBasicMapData) SetSellerId(v int64) *TaobaoTbkItemInfoUpgradeGetBasicMapData {
+	s.SellerId = &v
+	return s
+}
+func (s *TaobaoTbkItemInfoUpgradeGetBasicMapData) SetAnnualVol(v string) *TaobaoTbkItemInfoUpgradeGetBasicMapData {
+	s.AnnualVol = &v
 	return s
 }

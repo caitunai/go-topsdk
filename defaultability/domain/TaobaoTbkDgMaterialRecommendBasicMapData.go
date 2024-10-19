@@ -56,6 +56,18 @@ type TaobaoTbkDgMaterialRecommendBasicMapData struct {
 	/*
 	   商品信息-品牌名称     */
 	BrandName *string `json:"brand_name,omitempty" `
+
+	/*
+	   年销量     */
+	AnnualVol *string `json:"annual_vol,omitempty" `
+
+	/*
+	   商品信息-商品小图列表     */
+	SmallImages *[]string `json:"small_images,omitempty" `
+
+	/*
+	   商品邮费     */
+	RealPostFee *string `json:"real_post_fee,omitempty" `
 }
 
 func (s *TaobaoTbkDgMaterialRecommendBasicMapData) SetTitle(v string) *TaobaoTbkDgMaterialRecommendBasicMapData {
@@ -112,5 +124,17 @@ func (s *TaobaoTbkDgMaterialRecommendBasicMapData) SetSubTitle(v string) *Taobao
 }
 func (s *TaobaoTbkDgMaterialRecommendBasicMapData) SetBrandName(v string) *TaobaoTbkDgMaterialRecommendBasicMapData {
 	s.BrandName = &v
+	return s
+}
+func (s *TaobaoTbkDgMaterialRecommendBasicMapData) SetAnnualVol(v string) *TaobaoTbkDgMaterialRecommendBasicMapData {
+	s.AnnualVol = &v
+	return s
+}
+func (s *TaobaoTbkDgMaterialRecommendBasicMapData) SetSmallImages(v []string) *TaobaoTbkDgMaterialRecommendBasicMapData {
+	s.SmallImages = &v
+	return s
+}
+func (s *TaobaoTbkDgMaterialRecommendBasicMapData) SetRealPostFee(v string) *TaobaoTbkDgMaterialRecommendBasicMapData {
+	s.RealPostFee = &v
 	return s
 }

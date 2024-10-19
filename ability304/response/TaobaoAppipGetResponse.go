@@ -1,5 +1,7 @@
 package response
 
+import ()
+
 type TaobaoAppipGetResponse struct {
 
 	/*

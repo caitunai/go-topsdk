@@ -42,7 +42,7 @@ type TaobaoTbkDgVegasTljReportExtra struct {
 	RemainingAmt *string `json:"remaining_amt,omitempty" `
 
 	/*
-	   使用淘礼金个数，同一个红包，若因消费者付款使用后取消订单或退货退款，产生二次红包使用行为，使用淘礼金个数一天内会去重，所以相当于不会重记     */
+	   使用淘礼金个数，同一个红包，若因消费者付款使用后取消订单或退货退款，产生二次红包使用行为，使用淘礼金个数会重复计算     */
 	UseNum *int64 `json:"use_num,omitempty" `
 
 	/*
@@ -50,7 +50,7 @@ type TaobaoTbkDgVegasTljReportExtra struct {
 	UseSumAmt *string `json:"use_sum_amt,omitempty" `
 
 	/*
-	   退款淘礼金个数，红包使用后，由于订单取消，退货退款等行为带来的淘礼金红包退回数量，退款红包数量单日内不重复计算，跨天重复计算     */
+	   退款淘礼金个数，红包使用后，由于订单取消，退货退款等行为带来的淘礼金红包退回数量，退款红包数量会重复计算     */
 	RefundNum *int64 `json:"refund_num,omitempty" `
 
 	/*

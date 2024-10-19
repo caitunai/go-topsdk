@@ -20,6 +20,10 @@ type TaobaoTbkDgMaterialRecommendIncomeInfo struct {
 	/*
 	   补贴上限；仅在单笔订单命中补贴上限时返回结果否则出参为空     */
 	SubsidyUpperLimit *string `json:"subsidy_upper_limit,omitempty" `
+
+	/*
+	   补贴类型     */
+	SubsidyType *string `json:"subsidy_type,omitempty" `
 }
 
 func (s *TaobaoTbkDgMaterialRecommendIncomeInfo) SetCommissionRate(v string) *TaobaoTbkDgMaterialRecommendIncomeInfo {
@@ -40,5 +44,9 @@ func (s *TaobaoTbkDgMaterialRecommendIncomeInfo) SetSubsidyAmount(v string) *Tao
 }
 func (s *TaobaoTbkDgMaterialRecommendIncomeInfo) SetSubsidyUpperLimit(v string) *TaobaoTbkDgMaterialRecommendIncomeInfo {
 	s.SubsidyUpperLimit = &v
+	return s
+}
+func (s *TaobaoTbkDgMaterialRecommendIncomeInfo) SetSubsidyType(v string) *TaobaoTbkDgMaterialRecommendIncomeInfo {
+	s.SubsidyType = &v
 	return s
 }

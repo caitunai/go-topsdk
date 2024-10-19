@@ -32,6 +32,10 @@ type TaobaoTbkItemInfoUpgradeGetPromotionInfoMapData struct {
 	/*
 	   更多活动优惠     */
 	MorePromotionList *[]TaobaoTbkItemInfoUpgradeGetMorePromotionMapData `json:"more_promotion_list,omitempty" `
+
+	/*
+	   货品展示标识列表     */
+	ActivityTagList *[]TaobaoTbkItemInfoUpgradeGetActivityTagMapData `json:"activity_tag_list,omitempty" `
 }
 
 func (s *TaobaoTbkItemInfoUpgradeGetPromotionInfoMapData) SetReservePrice(v string) *TaobaoTbkItemInfoUpgradeGetPromotionInfoMapData {
@@ -64,5 +68,9 @@ func (s *TaobaoTbkItemInfoUpgradeGetPromotionInfoMapData) SetPredictRoundingUpPr
 }
 func (s *TaobaoTbkItemInfoUpgradeGetPromotionInfoMapData) SetMorePromotionList(v []TaobaoTbkItemInfoUpgradeGetMorePromotionMapData) *TaobaoTbkItemInfoUpgradeGetPromotionInfoMapData {
 	s.MorePromotionList = &v
+	return s
+}
+func (s *TaobaoTbkItemInfoUpgradeGetPromotionInfoMapData) SetActivityTagList(v []TaobaoTbkItemInfoUpgradeGetActivityTagMapData) *TaobaoTbkItemInfoUpgradeGetPromotionInfoMapData {
+	s.ActivityTagList = &v
 	return s
 }

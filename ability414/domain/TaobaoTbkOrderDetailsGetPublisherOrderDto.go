@@ -82,7 +82,7 @@ type TaobaoTbkOrderDetailsGetPublisherOrderDto struct {
 	PubSharePreFee *string `json:"pub_share_pre_fee,omitempty" `
 
 	/*
-	   付款金额。解释：买家拍下并付款金额（不包含运费金额、不包含未支付尾款的预售订单金额）；当预售订单完尾款支付后，付款金额会自动更新为订单总金额     */
+	   付款金额。解释：买家拍下并付款金额（含预售订单定金金额，但不包含运费金额）；当预售订单完成尾款支付后，付款金额会自动更新为订单总金额     */
 	AlipayTotalPrice *string `json:"alipay_total_price,omitempty" `
 
 	/*

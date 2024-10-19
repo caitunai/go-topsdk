@@ -56,6 +56,26 @@ type TaobaoTbkDgMaterialOptionalUpgradeBasicMapData struct {
 	/*
 	   商品信息-一级类目名称     */
 	LevelOneCategoryName *string `json:"level_one_category_name,omitempty" `
+
+	/*
+	   商品信息-淘客30天推广量     */
+	TkTotalSales *string `json:"tk_total_sales,omitempty" `
+
+	/*
+	   商品信息-宝贝所在地     */
+	Provcity *string `json:"provcity,omitempty" `
+
+	/*
+	   商品信息-商品小图列表     */
+	SmallImages *[]string `json:"small_images,omitempty" `
+
+	/*
+	   年销量     */
+	AnnualVol *string `json:"annual_vol,omitempty" `
+
+	/*
+	   商品邮费     */
+	RealPostFee *string `json:"real_post_fee,omitempty" `
 }
 
 func (s *TaobaoTbkDgMaterialOptionalUpgradeBasicMapData) SetTitle(v string) *TaobaoTbkDgMaterialOptionalUpgradeBasicMapData {
@@ -112,5 +132,25 @@ func (s *TaobaoTbkDgMaterialOptionalUpgradeBasicMapData) SetBrandName(v string) 
 }
 func (s *TaobaoTbkDgMaterialOptionalUpgradeBasicMapData) SetLevelOneCategoryName(v string) *TaobaoTbkDgMaterialOptionalUpgradeBasicMapData {
 	s.LevelOneCategoryName = &v
+	return s
+}
+func (s *TaobaoTbkDgMaterialOptionalUpgradeBasicMapData) SetTkTotalSales(v string) *TaobaoTbkDgMaterialOptionalUpgradeBasicMapData {
+	s.TkTotalSales = &v
+	return s
+}
+func (s *TaobaoTbkDgMaterialOptionalUpgradeBasicMapData) SetProvcity(v string) *TaobaoTbkDgMaterialOptionalUpgradeBasicMapData {
+	s.Provcity = &v
+	return s
+}
+func (s *TaobaoTbkDgMaterialOptionalUpgradeBasicMapData) SetSmallImages(v []string) *TaobaoTbkDgMaterialOptionalUpgradeBasicMapData {
+	s.SmallImages = &v
+	return s
+}
+func (s *TaobaoTbkDgMaterialOptionalUpgradeBasicMapData) SetAnnualVol(v string) *TaobaoTbkDgMaterialOptionalUpgradeBasicMapData {
+	s.AnnualVol = &v
+	return s
+}
+func (s *TaobaoTbkDgMaterialOptionalUpgradeBasicMapData) SetRealPostFee(v string) *TaobaoTbkDgMaterialOptionalUpgradeBasicMapData {
+	s.RealPostFee = &v
 	return s
 }

@@ -19,6 +19,9 @@ type TaobaoTbkItemInfoUpgradeGetRequest struct {
 	/*
 	   商品库服务账户(场景id3权限对应的memberid）     */
 	ManageItemPubId *int64 `json:"manage_item_pub_id,omitempty" required:"false" `
+	/*
+	   是否获取单品淘礼金剩余数量，0-否，1-是，默认否(仅开通淘礼金权限媒体可查)     */
+	GetTljInfo *int64 `json:"get_tlj_info,omitempty" required:"false" `
 }
 
 func (s *TaobaoTbkItemInfoUpgradeGetRequest) SetItemId(v string) *TaobaoTbkItemInfoUpgradeGetRequest {
@@ -45,6 +48,10 @@ func (s *TaobaoTbkItemInfoUpgradeGetRequest) SetManageItemPubId(v int64) *Taobao
 	s.ManageItemPubId = &v
 	return s
 }
+func (s *TaobaoTbkItemInfoUpgradeGetRequest) SetGetTljInfo(v int64) *TaobaoTbkItemInfoUpgradeGetRequest {
+	s.GetTljInfo = &v
+	return s
+}
 
 func (req *TaobaoTbkItemInfoUpgradeGetRequest) ToMap() map[string]interface{} {
 	paramMap := make(map[string]interface{})
@@ -65,6 +72,9 @@ func (req *TaobaoTbkItemInfoUpgradeGetRequest) ToMap() map[string]interface{} {
 	}
 	if req.ManageItemPubId != nil {
 		paramMap["manage_item_pub_id"] = *req.ManageItemPubId
+	}
+	if req.GetTljInfo != nil {
+		paramMap["get_tlj_info"] = *req.GetTljInfo
 	}
 	return paramMap
 }

@@ -20,6 +20,10 @@ type TaobaoTbkDgMaterialOptionalUpgradeFinalIncomeInfo struct {
 	/*
 	   补贴上限；仅在单笔订单命中补贴上限时返回结果否则出参为空     */
 	SubsidyUpperLimit *string `json:"subsidy_upper_limit,omitempty" `
+
+	/*
+	   补贴类型     */
+	SubsidyType *string `json:"subsidy_type,omitempty" `
 }
 
 func (s *TaobaoTbkDgMaterialOptionalUpgradeFinalIncomeInfo) SetCommissionRate(v string) *TaobaoTbkDgMaterialOptionalUpgradeFinalIncomeInfo {
@@ -40,5 +44,9 @@ func (s *TaobaoTbkDgMaterialOptionalUpgradeFinalIncomeInfo) SetSubsidyAmount(v s
 }
 func (s *TaobaoTbkDgMaterialOptionalUpgradeFinalIncomeInfo) SetSubsidyUpperLimit(v string) *TaobaoTbkDgMaterialOptionalUpgradeFinalIncomeInfo {
 	s.SubsidyUpperLimit = &v
+	return s
+}
+func (s *TaobaoTbkDgMaterialOptionalUpgradeFinalIncomeInfo) SetSubsidyType(v string) *TaobaoTbkDgMaterialOptionalUpgradeFinalIncomeInfo {
+	s.SubsidyType = &v
 	return s
 }

@@ -18,26 +18,6 @@ func NewDefaultability(client *topsdk.TopClient) *Defaultability {
 }
 
 /*
-关键词过滤匹配
-*/
-func (ability *Defaultability) TaobaoKfcKeywordSearch(req *request.TaobaoKfcKeywordSearchRequest, session string) (*response.TaobaoKfcKeywordSearchResponse, error) {
-	if ability.Client == nil {
-		return nil, errors.New("Defaultability topClient is nil")
-	}
-	var jsonStr, err = ability.Client.ExecuteWithSession("taobao.kfc.keyword.search", req.ToMap(), req.ToFileMap(), session)
-	var respStruct = response.TaobaoKfcKeywordSearchResponse{}
-	if err != nil {
-		log.Println("taobaoKfcKeywordSearch error", err)
-		return &respStruct, err
-	}
-	err = util.HandleJsonResponse(jsonStr, &respStruct)
-	if respStruct.Body == "" || len(respStruct.Body) == 0 {
-		respStruct.Body = jsonStr
-	}
-	return &respStruct, err
-}
-
-/*
 淘宝客-推广者-物料id列表查询
 */
 func (ability *Defaultability) TaobaoTbkOptimusTouMaterialIdsGet(req *request.TaobaoTbkOptimusTouMaterialIdsGetRequest) (*response.TaobaoTbkOptimusTouMaterialIdsGetResponse, error) {
@@ -48,6 +28,26 @@ func (ability *Defaultability) TaobaoTbkOptimusTouMaterialIdsGet(req *request.Ta
 	var respStruct = response.TaobaoTbkOptimusTouMaterialIdsGetResponse{}
 	if err != nil {
 		log.Println("taobaoTbkOptimusTouMaterialIdsGet error", err)
+		return &respStruct, err
+	}
+	err = util.HandleJsonResponse(jsonStr, &respStruct)
+	if respStruct.Body == "" || len(respStruct.Body) == 0 {
+		respStruct.Body = jsonStr
+	}
+	return &respStruct, err
+}
+
+/*
+关键词过滤匹配
+*/
+func (ability *Defaultability) TaobaoKfcKeywordSearch(req *request.TaobaoKfcKeywordSearchRequest, session string) (*response.TaobaoKfcKeywordSearchResponse, error) {
+	if ability.Client == nil {
+		return nil, errors.New("Defaultability topClient is nil")
+	}
+	var jsonStr, err = ability.Client.ExecuteWithSession("taobao.kfc.keyword.search", req.ToMap(), req.ToFileMap(), session)
+	var respStruct = response.TaobaoKfcKeywordSearchResponse{}
+	if err != nil {
+		log.Println("taobaoKfcKeywordSearch error", err)
 		return &respStruct, err
 	}
 	err = util.HandleJsonResponse(jsonStr, &respStruct)

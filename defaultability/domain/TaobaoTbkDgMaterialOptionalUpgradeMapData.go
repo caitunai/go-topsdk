@@ -32,6 +32,14 @@ type TaobaoTbkDgMaterialOptionalUpgradeMapData struct {
 	/*
 	   线报内容     */
 	MgcInfo *TaobaoTbkDgMaterialOptionalUpgradeMgcInfo `json:"mgc_info,omitempty" `
+
+	/*
+	   物料评估-匹配分     */
+	MatchScore *string `json:"match_score,omitempty" `
+
+	/*
+	   物料评估-收益分     */
+	CommiScore *string `json:"commi_score,omitempty" `
 }
 
 func (s *TaobaoTbkDgMaterialOptionalUpgradeMapData) SetItemId(v string) *TaobaoTbkDgMaterialOptionalUpgradeMapData {
@@ -64,5 +72,13 @@ func (s *TaobaoTbkDgMaterialOptionalUpgradeMapData) SetScopeInfo(v TaobaoTbkDgMa
 }
 func (s *TaobaoTbkDgMaterialOptionalUpgradeMapData) SetMgcInfo(v TaobaoTbkDgMaterialOptionalUpgradeMgcInfo) *TaobaoTbkDgMaterialOptionalUpgradeMapData {
 	s.MgcInfo = &v
+	return s
+}
+func (s *TaobaoTbkDgMaterialOptionalUpgradeMapData) SetMatchScore(v string) *TaobaoTbkDgMaterialOptionalUpgradeMapData {
+	s.MatchScore = &v
+	return s
+}
+func (s *TaobaoTbkDgMaterialOptionalUpgradeMapData) SetCommiScore(v string) *TaobaoTbkDgMaterialOptionalUpgradeMapData {
+	s.CommiScore = &v
 	return s
 }
